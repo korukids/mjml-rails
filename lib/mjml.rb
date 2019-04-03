@@ -13,7 +13,7 @@ module Mjml
   @@mjml_binary_error_string = "Couldn't find the MJML #{Mjml.mjml_binary_version_supported} binary.. have you run $ npm install mjml?"
 
   def self.check_version(bin)
-    IO.popen("#{bin} --version") { |io| io.read.include?("mjml-core: #{Mjml.mjml_binary_version_supported}") }
+    IO.popen([bin, '--version']) { |io| io.read.include?("mjml-core: #{Mjml.mjml_binary_version_supported}") }
   rescue
     false
   end
